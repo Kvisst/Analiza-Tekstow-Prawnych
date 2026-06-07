@@ -951,7 +951,7 @@ ggplot(top_artykuly,
 #' # 5. Analiza asocjacji słów
 # 5. Analiza asocjacji słów ----
 
-
+set.seed(2359) #stałe ziarno losowe dla replikacji wyników
 
 # Wczytanie i przygotowanie danych do asocjacji
 
@@ -1097,7 +1097,7 @@ top_terms_by_topic_LDA <- function(input_corpus, plot = TRUE, k = 3) {
   DTM <- DocumentTermMatrix(input_corpus)
   
   # 2. Wykonanie LDA
-  lda <- LDA(DTM, k = k, control = list(seed = 1234))
+  lda <- LDA(DTM, k = k, control = list(seed = 2359))
   topics <- tidy(lda, matrix = "beta") 
   
   # 3. Wyciągnięcie top 10 słów dla każdego tematu
@@ -1267,8 +1267,6 @@ V(graph)$degree <- degree(graph)
 n_clusters <- length(unique(communities))
 
 # UKŁAD GRAFU
-
-set.seed(123)
 
 layout_graph <- create_layout(
   graph,
